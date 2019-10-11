@@ -279,6 +279,10 @@ mod build_linked {
     fn link_lib() -> &'static str {
         if cfg!(feature = "sqlcipher") {
             "sqlcipher"
+        } else if cfg!(all(windows, feature = "winsqlite3")) {
+            "winsqlite3"
+        } else if cfg!(feature = "sqlitex") {
+            "sqliteX"
         } else {
             "sqlite3"
         }
